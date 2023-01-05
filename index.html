@@ -8,43 +8,29 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js" defer ></script>
+
 
 </head>
 <body>
-	<div id="CODIGOQR"></div>
 
 
-	
+<div>
+	<input id="entrada" value="Seu código aqui" placeholder="seu código aqui" type="text">
+</div>
+<br> </br>
+<div id="qrcode"></div>
 
 </body>
-
-
-<script>new QRCode(document.getElementById("CODIGOQR"), "MENSAGEM")</script>
-
 </html>
 
-
-
-
-
-/* Basic and simple one */
-<div id="qrcode"></div>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 <script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), "tudo bem?");
-</script>
+	let input = document.getElementById("entrada");
+	let saida = document.getElementById("qrcode");
+	input.onchange = ( () => {
+		saida.innerHTML = null;
+		let a = new QRCode(saida, input.value);
+	});
 
-/*With some options*/
-
-<div id="qrcode-2"></div>
-<script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode-2"), {
-	text: "ola",
-	width: 128,
-	height: 128,
-	colorDark : "#5868bf",
-	colorLight : "#ffffff",
-	correctLevel : QRCode.CorrectLevel.H
-
-});
+	
 </script>
